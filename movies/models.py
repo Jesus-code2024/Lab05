@@ -4,6 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
 
 
+
 class Person(models.Model):
     """Base model for people in the movie industry"""
     name = models.CharField(max_length=200)
