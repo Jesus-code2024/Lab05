@@ -33,7 +33,6 @@ class MovieActorInline(admin.TabularInline):
     extra = 1
     autocomplete_fields = ['actor']
 
-
 # Inline for ratings
 class RatingInline(admin.TabularInline):
     """Inline admin for ratings"""
@@ -42,7 +41,6 @@ class RatingInline(admin.TabularInline):
     readonly_fields = ['user', 'value', 'created_at']
     can_delete = False
     max_num = 0  # Don't allow adding new ratings through admin
-
 
 @admin.register(Director)
 class DirectorAdmin(admin.ModelAdmin):
@@ -58,7 +56,6 @@ class DirectorAdmin(admin.ModelAdmin):
         return count if count > 0 else '-'
     movie_count.short_description = "Movies Directed"
 
-
 @admin.register(Actor)
 class ActorAdmin(admin.ModelAdmin):
     """Admin configuration for actors"""
@@ -72,7 +69,6 @@ class ActorAdmin(admin.ModelAdmin):
         return count if count > 0 else '-'
     movie_count.short_description = "Movies Appeared In"
 
-
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     """Admin configuration for genres"""
@@ -85,7 +81,6 @@ class GenreAdmin(admin.ModelAdmin):
         count = obj.movies.count()
         return count if count > 0 else '-'
     movie_count.short_description = "Movies"
-
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
@@ -127,7 +122,6 @@ class MovieAdmin(admin.ModelAdmin):
         return "No poster available"
     display_poster.short_description = "Poster Preview"
 
-
 @admin.register(MovieActor)
 class MovieActorAdmin(admin.ModelAdmin):
     """Admin configuration for movie actors"""
@@ -135,7 +129,6 @@ class MovieActorAdmin(admin.ModelAdmin):
     list_filter = ('movie', 'actor', 'is_lead')
     search_fields = ('movie__title', 'actor__name', 'character_name')
     autocomplete_fields = ['movie', 'actor']
-
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
@@ -153,7 +146,6 @@ class UserProfileAdmin(admin.ModelAdmin):
         """Count ratings"""
         return obj.user.ratings.count()
     rating_count.short_description = "Ratings"
-
 
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
